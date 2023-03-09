@@ -1,6 +1,7 @@
 package com.rest.controller;
 
 import com.rest.dto.EmployeeDto;
+import com.rest.dto.EmployeeRequestUpdate;
 import com.rest.dto.EmployeeResponseEmail;
 import com.rest.entity.Employee;
 import com.rest.services.EmplServices;
@@ -51,8 +52,18 @@ public class EmplController {
 
     @GetMapping("employees/all")
     public ResponseEntity<List<Employee>> findAll() {
-        List<Employee> employeeAll = services.getAll();
-        return ResponseEntity.ok(employeeAll);
+        return ResponseEntity.ok(services.getAll());
     }
+
+    @PutMapping("employees/update/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody EmployeeRequestUpdate requestUpdate){
+       return ResponseEntity.ok(services.updateEmployee(id, requestUpdate));
+    }
+
+    @DeleteMapping("employees/delete/{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable Long id){
+        return ResponseEntity.ok(services.deleteEmployee(id));
+    }
+
 
 }

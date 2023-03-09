@@ -1,6 +1,7 @@
 package com.rest.services;
 
 import com.rest.dto.EmployeeDto;
+import com.rest.dto.EmployeeRequestUpdate;
 import com.rest.dto.EmployeeResponseEmail;
 import com.rest.entity.Employee;
 
@@ -16,4 +17,8 @@ public interface EmplServices {
     Employee getByEmployeeEmail(String email);
 
     List<Employee> getAll();
+
+    Employee updateEmployee(Long id, EmployeeRequestUpdate requestUpdate);
+
+    String deleteEmployee(Long id);
 }

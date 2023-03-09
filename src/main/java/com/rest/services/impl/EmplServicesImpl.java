@@ -1,6 +1,7 @@
 package com.rest.services.impl;
 
 import com.rest.dto.EmployeeDto;
+import com.rest.dto.EmployeeRequestUpdate;
 import com.rest.entity.Employee;
 import com.rest.repo.EmplRepo;
 import com.rest.services.EmplServices;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class EmplServicesImpl implements EmplServices {
@@ -48,6 +50,26 @@ public class EmplServicesImpl implements EmplServices {
     @Override
     public List<Employee> getAll() {
         return emplRepo.findAll();
+    }
+
+    @Override
+    public Employee updateEmployee(Long id, EmployeeRequestUpdate requestUpdate) {
+        Employee employee = emplRepo.findById(id).orElse(null);
+        if(Objects.nonNull(employee)){
+            employee.setName(requestUpdate.getName());
+            employee.setLastName(requestUpdate.getLastName());
+            employee.setEmail(requestUpdate.getEmail());
+            employee.setPassword(requestUpdate.getEmail());
+            return emplRepo.save(employee);
+        }else{
+            return null;
+        }
+    }
+
+    @Override
+    public String deleteEmployee(Long id) {
+        emplRepo.deleteById(id);
+        return "Data Successfully Delete";
     }
 
 
