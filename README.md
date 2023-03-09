@@ -1,6 +1,6 @@
 # Spring_Boot_MySql
 
->>>>>>>>>>>>> Curd Operation <<<<<<<<<<<<<<<<
+<<<<<<<<<<<<< Curd Operation <<<<<<<<<<<<<<<<
 
 Save Employee Url
 
